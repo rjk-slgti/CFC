@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carbon Accounting Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="bg-white shadow-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <span class="text-2xl mr-2">\u{1F30D}</span>
+          <span class="font-bold text-xl text-gray-900">Carbon Accounting</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <button class="text-sm text-gray-600 hover:text-gray-900" onclick="showHelp('scope')">Help</button>
+          <span class="text-sm text-gray-500" id="user-info">Guest</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Summary Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8" id="summary-cards">
+      <div class="bg-white rounded-lg shadow p-6 border-l-4 border-red-500">
+        <div class="text-sm text-gray-500 mb-1">Scope 1</div>
+        <div class="text-2xl font-bold text-gray-900" id="scope1-total">--</div>
+        <div class="text-xs text-gray-400">t CO2e</div>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6 border-l-4 border-blue-500">
+        <div class="text-sm text-gray-500 mb-1">Scope 2</div>
+        <div class="text-2xl font-bold text-gray-900" id="scope2-total">--</div>
+        <div class="text-xs text-gray-400">t CO2e</div>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6 border-l-4 border-green-500">
+        <div class="text-sm text-gray-500 mb-1">Scope 3</div>
+        <div class="text-2xl font-bold text-gray-900" id="scope3-total">--</div>
+        <div class="text-xs text-gray-400">t CO2e</div>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6 border-l-4 border-gray-800">
+        <div class="text-sm text-gray-500 mb-1">Total</div>
+        <div class="text-2xl font-bold text-gray-900" id="total-emissions">--</div>
+        <div class="text-xs text-gray-400">t CO2e</div>
+      </div>
+    </div>
+
+    <!-- Suggestions Container -->
+    <div id="suggestions-container"></div>
+
+    <!-- Emission Entry Form -->
+    <div class="bg-white rounded-lg shadow p-6 mb-8">
+      <h2 class="text-lg font-semibold text-gray-900 mb-4">Add Emission Data</h2>
+
+      <form id="emission-form" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" data-help="scope">
+            Scope
+          </label>
+          <select id="form-scope" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500" required>
+            <option value="scope_1">Scope 1 - Direct</option>
+            <option value="scope_2">Scope 2 - Electricity</option>
+            <option value="scope_3">Scope 3 - Value Chain</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" data-help="emission_factor">
+            Source Type
+          </label>
+          <select id="form-source-type" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500" required>
+            <optgroup label="Scope 1">
+              <option value="diesel_generator">Diesel Generator</option>
+              <option value="diesel_vehicle">Diesel Vehicle</option>
+              <option value="petrol_vehicle">Petrol Vehicle</option>
+              <option value="lpg_combustion">LPG Combustion</option>
+              <option value="natural_gas">Natural Gas</option>
+              <option value="refrigerant_r134a">Refrigerant R-134a</option>
+            </optgroup>
+            <optgroup label="Scope 2">
+              <option value="electricity_grid">Grid Electricity</option>
+              <option value="purchased_heat">Purchased Heat</option>
+            </optgroup>
+            <optgroup label="Scope 3">
+              <option value="office_paper">Office Paper</option>
+              <option value="waste_landfill">Waste to Landfill</option>
+              <option value="waste_recycled">Waste Recycled</option>
+              <option value="employee_commuting">Employee Commuting</option>
+              <option value="business_travel_air">Business Travel (Air)</option>
+              <option value="water_supply">Water Supply</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Quantity
+          </label>
+          <input type="number" id="form-quantity" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500"
+                 placeholder="e.g., 500" min="0" step="0.01" required>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Unit
+          </label>
+          <select id="form-unit" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500" required>
+            <option value="liters">Liters</option>
+            <option value="kg">Kilograms (kg)</option>
+            <option value="kwh">Kilowatt-hours (kWh)</option>
+            <option value="mwh">Megawatt-hours (MWh)</option>
+            <option value="km">Kilometers (km)</option>
+            <option value="cubic_meters">Cubic Meters</option>
+            <option value="ream">Reams (Paper)</option>
+            <option value="usd">USD</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            From Date
+          </label>
+          <input type="date" id="form-date-from" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500" required>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            To Date
+          </label>
+          <input type="date" id="form-date-to" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500" required>
+        </div>
+
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-gray-700 mb-1" data-help="measurement_method">
+            Measurement Method
+          </label>
+          <select id="form-measurement" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500">
+            <option value="meter_reading">Meter Reading</option>
+            <option value="invoice">Utility Invoice</option>
+            <option value="estimate" selected>Estimate</option>
+            <option value="unknown">Unknown</option>
+          </select>
+        </div>
+
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium text-gray-700 mb-1">Notes</label>
+          <textarea id="form-notes" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500"
+                    rows="2" placeholder="Optional notes about this data entry"></textarea>
+        </div>
+
+        <div class="flex items-end">
+          <button type="submit" class="w-full bg-blue-600 text-white font-medium py-2.5 px-4 rounded-lg hover:bg-blue-700 transition-colors">
+            Calculate Emissions
+          </button>
+        </div>
+      </form>
+
+      <!-- Result Display -->
+      <div id="calculation-result" class="hidden mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+        <h3 class="font-semibold text-gray-900 mb-3">Calculation Result</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="result-values"></div>
+        <div id="result-quality" class="mt-4"></div>
+        <div id="result-validation" class="mt-4"></div>
+      </div>
+    </div>
+
+    <!-- Emissions Table -->
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+      <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+        <h2 class="text-lg font-semibold text-gray-900">Emission Records</h2>
+        <button class="text-sm text-blue-600 hover:text-blue-800" onclick="loadEmissions()">Refresh</button>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Scope</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Source</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quantity</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">CO2e (kg)</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quality</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+            </tr>
+          </thead>
+          <tbody id="emissions-table-body" class="bg-white divide-y divide-gray-200">
+            <tr><td colspan="7" class="px-6 py-8 text-center text-gray-400">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <script type="module">
+    import api from './js/modules/apiClient.js';
+    import helpSystem from './js/modules/helpSystem.js';
+    import smartSuggestions from './js/modules/smartSuggestions.js';
+    import onboardingWizard from './js/modules/onboardingWizard.js';
+    import { formatNumber, formatDate, getScopeInfo, firstOfMonthISO, todayISO } from './js/modules/utils.js';
+
+    // Make help available globally
+    window.showHelp = (topic) => helpSystem.showHelp(topic);
+
+    // Initialize help icons
+    helpSystem.attachHelpIcons();
+
+    // Set default dates
+    document.getElementById('form-date-from').value = firstOfMonthISO();
+    document.getElementById('form-date-to').value = todayISO();
+
+    // User ID for demo (in production, this comes from auth)
+    const DEMO_USER_ID = '000000000000000000000001';
+
+    // Load initial data
+    async function init() {
+      const onboardingDone = localStorage.getItem('onboarding_completed');
+      if (onboardingDone !== 'true') {
+        onboardingWizard.start((data) => {
+          console.log('Onboarding complete:', data);
+          loadData();
+        });
+      } else {
+        loadData();
+      }
+    }
+
+    async function loadData() {
+      await Promise.all([loadSummary(), loadEmissions()]);
+    }
+
+    // Load summary
+    async function loadSummary() {
+      try {
+        const res = await api.getSummary();
+        const data = res.data;
+        document.getElementById('scope1-total').textContent = formatNumber(data.scope_1.totalCo2e / 1000);
+        document.getElementById('scope2-total').textContent = formatNumber(data.scope_2.totalCo2e / 1000);
+        document.getElementById('scope3-total').textContent = formatNumber(data.scope_3.totalCo2e / 1000);
+        document.getElementById('total-emissions').textContent = formatNumber(data.total.totalCo2e / 1000);
+      } catch (err) {
+        console.error('Failed to load summary:', err.message);
+      }
+    }
+
+    // Load emissions
+    window.loadEmissions = async function() {
+      try {
+        const res = await api.getEmissions({ limit: 50 });
+        const tbody = document.getElementById('emissions-table-body');
+
+        if (!res.data || res.data.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="7" class="px-6 py-8 text-center text-gray-400">No emissions recorded yet. Add your first entry above.</td></tr>';
+
+          // Show suggestions
+          const container = document.getElementById('suggestions-container');
+          const suggestions = smartSuggestions.generateSuggestions([]);
+          smartSuggestions.renderSuggestions(container, suggestions, handleSuggestionAction);
+          return;
+        }
+
+        tbody.innerHTML = res.data.map(item => {
+          const calc = item.calculation;
+          const scopeInfo = getScopeInfo(item.scope);
+          const qualityGrade = calc?.qualityScore ? getQualityGrade(calc.qualityScore) : null;
+
+          return `
+            <tr class="hover:bg-gray-50">
+              <td class="px-6 py-4 text-sm text-gray-900">${formatDate(item.dateFrom)}</td>
+              <td class="px-6 py-4">
+                <span class="px-2 py-1 text-xs rounded-full ${scopeInfo.bgClass} ${scopeInfo.textClass}">${scopeInfo.label}</span>
+              </td>
+              <td class="px-6 py-4 text-sm text-gray-700">${item.sourceType.replace(/_/g, ' ')}</td>
+              <td class="px-6 py-4 text-sm text-gray-700">${formatNumber(item.quantity)} ${item.unit}</td>
+              <td class="px-6 py-4 text-sm font-medium text-gray-900">${calc ? formatNumber(calc.co2e) : '--'}</td>
+              <td class="px-6 py-4">
+                ${qualityGrade ? `<span class="px-2 py-1 text-xs rounded border ${qualityGrade.classes}">${qualityGrade.letter}</span>` : '--'}
+              </td>
+              <td class="px-6 py-4">
+                <span class="px-2 py-1 text-xs rounded-full ${getStatusClass(item.status)}">${item.status}</span>
+              </td>
+            </tr>
+          `;
+        }).join('');
+
+        // Generate suggestions
+        const container = document.getElementById('suggestions-container');
+        const suggestions = smartSuggestions.generateSuggestions(res.data);
+        smartSuggestions.renderSuggestions(container, suggestions, handleSuggestionAction);
+
+      } catch (err) {
+        console.error('Failed to load emissions:', err.message);
+      }
+    };
+
+    // Form submission
+    document.getElementById('emission-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const data = {
+        userId: DEMO_USER_ID,
+        scope: document.getElementById('form-scope').value,
+        sourceType: document.getElementById('form-source-type').value,
+        quantity: parseFloat(document.getElementById('form-quantity').value),
+        unit: document.getElementById('form-unit').value,
+        dateFrom: document.getElementById('form-date-from').value,
+        dateTo: document.getElementById('form-date-to').value,
+        measurementMethod: document.getElementById('form-measurement').value,
+        notes: document.getElementById('form-notes').value,
+      };
+
+      try {
+        const res = await api.calculateEmissions(data);
+        showResult(res.data);
+        loadData();
+      } catch (err) {
+        alert(`Error: ${err.message}`);
+      }
+    });
+
+    function showResult(data) {
+      const container = document.getElementById('calculation-result');
+      const values = document.getElementById('result-values');
+      const quality = document.getElementById('result-quality');
+      const validation = document.getElementById('result-validation');
+
+      container.classList.remove('hidden');
+
+      values.innerHTML = `
+        <div class="text-center p-3 bg-white rounded border">
+          <div class="text-xs text-gray-500">CO2</div>
+          <div class="text-lg font-bold">${formatNumber(data.emissions.co2)} kg</div>
+        </div>
+        <div class="text-center p-3 bg-white rounded border">
+          <div class="text-xs text-gray-500">CH4</div>
+          <div class="text-lg font-bold">${formatNumber(data.emissions.ch4, 4)} kg</div>
+        </div>
+        <div class="text-center p-3 bg-white rounded border">
+          <div class="text-xs text-gray-500">N2O</div>
+          <div class="text-lg font-bold">${formatNumber(data.emissions.n2o, 6)} kg</div>
+        </div>
+        <div class="text-center p-3 bg-blue-50 rounded border border-blue-200">
+          <div class="text-xs text-blue-600">CO2e</div>
+          <div class="text-lg font-bold text-blue-700">${formatNumber(data.emissions.co2e)} kg</div>
+        </div>
+      `;
+
+      // Quality score
+      if (data.qualityScore) {
+        const q = data.qualityScore;
+        const gradeClass = q.grade.color === 'green' ? 'bg-green-100 text-green-800' :
+                           q.grade.color === 'blue' ? 'bg-blue-100 text-blue-800' :
+                           q.grade.color === 'yellow' ? 'bg-yellow-100 text-yellow-800' :
+                           q.grade.color === 'orange' ? 'bg-orange-100 text-orange-800' :
+                           'bg-red-100 text-red-800';
+
+        quality.innerHTML = `
+          <div class="flex items-center gap-4">
+            <span class="text-sm text-gray-600">Data Quality:</span>
+            <span class="px-3 py-1 rounded-full text-sm font-bold ${gradeClass}">
+              ${q.grade.letter} (${q.totalScore}/100)
+            </span>
+            <span class="text-sm text-gray-500">${q.grade.label}</span>
+          </div>
+          ${q.recommendations.length > 0 ? `
+            <div class="mt-2 text-sm text-gray-600">
+              <strong>Recommendations:</strong>
+              <ul class="list-disc pl-5 mt-1">
+                ${q.recommendations.map(r => `<li>${r}</li>`).join('')}
+              </ul>
+            </div>
+          ` : ''}
+        `;
+      }
+
+      // Validation warnings
+      if (data.validation && data.validation.warnings.length > 0) {
+        validation.innerHTML = `
+          <div class="space-y-2">
+            ${data.validation.warnings.map(w => `
+              <div class="p-2 rounded text-sm ${
+                w.level === 'error' ? 'bg-red-50 text-red-700 border border-red-200' :
+                w.level === 'warning' ? 'bg-yellow-50 text-yellow-700 border border-yellow-200' :
+                'bg-blue-50 text-blue-700 border border-blue-200'
+              }">
+                ${w.message}
+              </div>
+            `).join('')}
+          </div>
+        `;
+      } else {
+        validation.innerHTML = '';
+      }
+    }
+
+    function getQualityGrade(score) {
+      if (score >= 90) return { letter: 'A', classes: 'bg-green-100 text-green-800 border-green-200' };
+      if (score >= 75) return { letter: 'B', classes: 'bg-blue-100 text-blue-800 border-blue-200' };
+      if (score >= 60) return { letter: 'C', classes: 'bg-yellow-100 text-yellow-800 border-yellow-200' };
+      if (score >= 40) return { letter: 'D', classes: 'bg-orange-100 text-orange-800 border-orange-200' };
+      return { letter: 'F', classes: 'bg-red-100 text-red-800 border-red-200' };
+    }
+
+    function getStatusClass(status) {
+      switch (status) {
+        case 'approved': return 'bg-green-100 text-green-700';
+        case 'rejected': return 'bg-red-100 text-red-700';
+        default: return 'bg-yellow-100 text-yellow-700';
+      }
+    }
+
+    function handleSuggestionAction(suggestion) {
+      if (suggestion.type === 'missing_data' && suggestion.sourceType) {
+        document.getElementById('form-source-type').value = suggestion.sourceType;
+        document.getElementById('form-quantity').focus();
+        window.scrollTo({ top: document.getElementById('emission-form').offsetTop - 100, behavior: 'smooth' });
+      }
+    }
+
+    // Initialize
+    init();
+  </script>
+
+</body>
+</html>
