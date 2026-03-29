@@ -488,4 +488,79 @@ Now that testing is complete, proceed to **Phase 10: Deployment** to put your ap
 ---
 
 *Phase 9 Complete ✅*
-*Next: Phase 10 — Deployment (Production)*
+*Next: Phase 10 — Security & Compliance*
+
+---
+
+## Phase 9 Deliverables & Milestones
+
+### Deliverables
+
+| # | Deliverable | Format | Owner |
+|---|-------------|--------|-------|
+| D9.1 | Test Plan Document | Markdown | QA Lead |
+| D9.2 | Manual Testing Checklist (Completed) | Markdown with checkmarks | QA Engineer |
+| D9.3 | Postman API Test Collection | Postman Collection JSON | QA Engineer |
+| D9.4 | Calculation Verification Report | Spreadsheet/Markdown | QA Engineer |
+| D9.5 | Browser Compatibility Report | Markdown | QA Engineer |
+| D9.6 | Performance Test Results | Markdown with metrics | QA Engineer |
+| D9.7 | Bug Report Log | Issue tracker entries | QA Engineer |
+| D9.8 | Test Summary Report | Markdown | QA Lead |
+
+### Key Milestones
+
+| # | Milestone | Criteria | Target Week |
+|---|-----------|----------|-------------|
+| M9.1 | Test Plan Approved | All test cases defined | Week 1 Day 2 |
+| M9.2 | API Tests Complete | All Postman tests pass | Week 1 Day 5 |
+| M9.3 | Calculation Verification Complete | Manual math matches app output | Week 2 Day 2 |
+| M9.4 | Edge Cases Tested | All boundary values verified | Week 2 Day 3 |
+| M9.5 | Performance Benchmarks Met | All metrics within targets | Week 2 Day 4 |
+| M9.6 | Test Sign-Off | QA Lead approves for Phase 10 | Week 2 Day 5 |
+
+### Responsible Parties
+
+| Role | Responsibility |
+|------|---------------|
+| QA Lead | Test plan, test summary, sign-off |
+| QA Engineer | Manual testing, API testing, bug reporting |
+| Backend Developer | Bug fixes, calculation verification |
+| Frontend Developer | UI bug fixes, browser testing |
+| Compliance Lead | Audit readiness checklist verification |
+
+### Estimated Timeline: 2 weeks
+
+| Week | Activities |
+|------|-----------|
+| Week 1 | Test plan, API testing, manual testing, browser testing |
+| Week 2 | Calculation verification, edge cases, performance, bug fixes, sign-off |
+
+### Risks & Mitigation
+
+| Risk | Impact | Probability | Mitigation |
+|------|--------|-------------|------------|
+| Calculation errors discovered late | Critical | Medium | Verify calculations in Week 1 |
+| Browser-specific bugs | Medium | Medium | Test all browsers in Week 1 |
+| Performance issues | Medium | Medium | Benchmark early; optimize iteratively |
+| Incomplete test coverage | High | Medium | Use checklist approach; track coverage |
+
+### Success Metrics
+
+| Metric | Target | Measurement |
+|--------|--------|-------------|
+| API test pass rate | 100% | Postman results |
+| Calculation accuracy | 100% | Manual verification |
+| Browser compatibility | Chrome/Firefox/Edge | Manual testing |
+| Critical bugs remaining | 0 | Bug tracker |
+| Performance benchmarks | All green | Lighthouse/Postman metrics |
+| Edge case coverage | 100% | Checklist completion |
+
+### Transition Criteria to Phase 10
+
+- [x] All test cases executed
+- [x] 100% API test pass rate
+- [x] All calculations verified manually
+- [x] Zero critical/high bugs remaining
+- [x] Performance benchmarks met
+- [x] Browser compatibility verified
+- [x] Test summary report approved by QA Lead

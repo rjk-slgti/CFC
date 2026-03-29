@@ -631,3 +631,72 @@ Now that you understand the architecture, proceed to **Phase 3: Tech Stack Selec
 
 *Phase 2 Complete ✅*
 *Next: Phase 3 — Tech Stack (Justified Selection)*
+
+---
+
+## Phase 2 Deliverables & Milestones
+
+### Deliverables
+
+| # | Deliverable | Format | Owner |
+|---|-------------|--------|-------|
+| D2.1 | System Architecture Document | Markdown/Visio | Lead Architect |
+| D2.2 | Component Diagram (Frontend/Backend/DB) | Diagram | Lead Architect |
+| D2.3 | Data Flow Diagram (End-to-End) | Diagram | Lead Architect |
+| D2.4 | Database Schema (High-Level) | ERD Document | Database Lead |
+| D2.5 | API Contract Definition | OpenAPI/Swagger Spec | Backend Lead |
+| D2.6 | Audit Trail Design Document | Markdown | Compliance Lead |
+| D2.7 | Scalability Plan | Markdown | Lead Architect |
+
+### Key Milestones
+
+| # | Milestone | Criteria | Target Week |
+|---|-----------|----------|-------------|
+| M2.1 | Architecture Draft Complete | All components defined | Week 1 |
+| M2.2 | Architecture Review Passed | Stakeholder sign-off | Week 2 |
+| M2.3 | API Contract Finalized | OpenAPI spec published | Week 2 |
+
+### Responsible Parties
+
+| Role | Responsibility |
+|------|---------------|
+| Lead Architect | Overall system design, component diagrams |
+| Backend Lead | API design, calculation engine architecture |
+| Database Lead | Schema design, indexing strategy |
+| Compliance Lead | Audit trail design, ISO 14064 alignment |
+| Project Manager | Review facilitation, milestone tracking |
+
+### Estimated Timeline: 2 weeks
+
+| Week | Activities |
+|------|-----------|
+| Week 1 | Define components, data flow, database schema |
+| Week 2 | API contracts, audit trail design, architecture review |
+
+### Risks & Mitigation
+
+| Risk | Impact | Probability | Mitigation |
+|------|--------|-------------|------------|
+| Over-engineering architecture | High | Medium | Follow "start simple" principle; defer microservices |
+| Misaligned ISO 14064 requirements | High | Low | Cross-reference with Phase 1 compliance checklist |
+| Stakeholder disagreement on approach | Medium | Medium | Facilitate decision matrix workshop |
+| Underestimating audit complexity | Medium | High | Study ISO 14064 audit requirements early |
+
+### Success Metrics
+
+| Metric | Target | Measurement |
+|--------|--------|-------------|
+| Architecture completeness | 100% | All components documented with responsibilities |
+| ISO alignment | 100% | All Phase 1 requirements addressed in architecture |
+| Stakeholder approval | Signed off | Architecture review meeting with sign-off |
+| API coverage | 100% | All required endpoints defined in contract |
+
+### Transition Criteria to Phase 3
+
+- [x] Architecture document complete and reviewed
+- [x] All components have defined responsibilities
+- [x] Data flow validated against ISO 14064 requirements
+- [x] Database schema supports traceability and auditability
+- [x] API contract covers all required endpoints
+- [x] Scalability approach documented
+- [x] Stakeholder sign-off obtained

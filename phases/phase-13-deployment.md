@@ -1,4 +1,4 @@
-# PHASE 10 — DEPLOYMENT (PRODUCTION)
+# PHASE 13 — DEPLOYMENT (PRODUCTION)
 
 ## Explanation (WHY)
 
@@ -511,5 +511,78 @@ Now that your app is deployed, proceed to **Phase 11: Scaling** to add advanced 
 
 ---
 
-*Phase 10 Complete ✅*
-*Next: Phase 11 — Scaling (Advanced System)*
+*Phase 13 Complete ✅*
+*Next: Phase 14 — Monitoring, Maintenance & Scaling*
+
+---
+
+## Phase 13 Deliverables & Milestones
+
+### Deliverables
+
+| # | Deliverable | Format | Owner |
+|---|-------------|--------|-------|
+| D13.1 | GitHub Repository (Production-Ready) | Git repo | DevOps Lead |
+| D13.2 | MongoDB Atlas (Production Cluster) | Cloud instance | DevOps Lead |
+| D13.3 | Backend Deployed (Render) | Live URL | DevOps Lead |
+| D13.4 | Frontend Deployed (Vercel) | Live URL | DevOps Lead |
+| D13.5 | Environment Variables Configured | Cloud dashboards | DevOps Lead |
+| D13.6 | Custom Domain (Optional) | DNS configuration | DevOps Lead |
+| D13.7 | Deployment Runbook | Markdown | DevOps Lead |
+| D13.8 | Live System Verification Report | Markdown with checklist | QA Engineer |
+
+### Key Milestones
+
+| # | Milestone | Criteria | Target Week |
+|---|-----------|----------|-------------|
+| M13.1 | MongoDB Atlas Production Ready | Cluster live, credentials secured | Day 1 |
+| M13.2 | Backend Deployed | Health check returns OK | Day 2 |
+| M13.3 | Frontend Deployed | Site loads, API calls succeed | Day 3 |
+| M13.4 | CORS Configured for Production | No CORS errors in production | Day 4 |
+| M13.5 | Live System Verified | All checklist items pass | Day 5 |
+
+### Responsible Parties
+
+| Role | Responsibility |
+|------|---------------|
+| DevOps Lead | Deployment, environment config, domain setup |
+| Backend Lead | Production server configuration |
+| Frontend Lead | Production API URL configuration |
+| QA Engineer | Live system verification |
+
+### Estimated Timeline: 1 week
+
+| Day | Activities |
+|-----|-----------|
+| Day 1 | MongoDB Atlas production setup, credentials |
+| Day 2 | Backend deployment to Render, environment variables |
+| Day 3 | Frontend deployment to Vercel, API URL update |
+| Day 4 | CORS update, redeploy backend, smoke testing |
+| Day 5 | Full verification, documentation, sign-off |
+
+### Risks & Mitigation
+
+| Risk | Impact | Probability | Mitigation |
+|------|--------|-------------|------------|
+| Environment variable misconfiguration | High | Medium | Use checklist; verify each variable |
+| CORS errors in production | High | High | Test CORS immediately after deployment |
+| Cold start latency (Render free tier) | Medium | High | Document limitation; plan upgrade |
+| Database connection failures | High | Low | Whitelist IPs; test connection string |
+
+### Success Metrics
+
+| Metric | Target | Measurement |
+|--------|--------|-------------|
+| Deployment success | Both services live | Health check + page load |
+| End-to-end functionality | 100% | Live testing checklist |
+| HTTPS enabled | Yes | Browser padlock check |
+| API response time (production) | < 2s | Postman test |
+
+### Transition Criteria to Phase 14
+
+- [x] Frontend accessible via public URL
+- [x] Backend accessible via public URL
+- [x] Database connected and operational
+- [x] Full data flow works in production
+- [x] HTTPS enabled on both services
+- [x] Live testing checklist 100% complete

@@ -880,3 +880,77 @@ Now that the frontend is built, proceed to **Phase 6: Backend** to create the No
 
 *Phase 5 Complete ✅*
 *Next: Phase 6 — Backend (GHG Calculation Engine)*
+
+---
+
+## Phase 5 Deliverables & Milestones
+
+### Deliverables
+
+| # | Deliverable | Format | Owner |
+|---|-------------|--------|-------|
+| D5.1 | Project Structure & File Organization | Git repo structure | Frontend Lead |
+| D5.2 | Main HTML File (index.html) | HTML file | Frontend Developer |
+| D5.3 | Scope Configuration Module | JavaScript module | Frontend Developer |
+| D5.4 | Input Validation Module | JavaScript module | Frontend Developer |
+| D5.5 | API Communication Module | JavaScript module | Frontend Developer |
+| D5.6 | Form Handler Module | JavaScript module | Frontend Developer |
+| D5.7 | UI Manager Module | JavaScript module | Frontend Developer |
+| D5.8 | Main App Entry Point | JavaScript module | Frontend Developer |
+| D5.9 | Frontend Unit Tests | Test files | QA Engineer |
+
+### Key Milestones
+
+| # | Milestone | Criteria | Target Week |
+|---|-----------|----------|-------------|
+| M5.1 | Project Structure Created | All folders and base files in place | Week 1 Day 2 |
+| M5.2 | Dashboard UI Complete | Dashboard renders with mock data | Week 1 Day 5 |
+| M5.3 | Input Form Complete | All scope/source selections functional | Week 2 Day 3 |
+| M5.4 | Client-Side Validation Working | All validation rules enforced | Week 2 Day 5 |
+| M5.5 | Frontend Modules Complete | All modules implemented and tested | Week 3 Day 3 |
+| M5.6 | Frontend Ready for Integration | Works with mock API responses | Week 3 Day 5 |
+
+### Responsible Parties
+
+| Role | Responsibility |
+|------|---------------|
+| Frontend Lead | Architecture, module structure, code review |
+| Frontend Developer | HTML, CSS, JavaScript implementation |
+| UI/UX Designer | Design fidelity verification |
+| QA Engineer | Frontend unit testing |
+
+### Estimated Timeline: 3 weeks
+
+| Week | Activities |
+|------|-----------|
+| Week 1 | Project setup, HTML structure, dashboard UI, tab navigation |
+| Week 2 | Input forms, scope configuration, validation module, form handler |
+| Week 3 | API module, UI manager, main app integration, unit testing |
+
+### Risks & Mitigation
+
+| Risk | Impact | Probability | Mitigation |
+|------|--------|-------------|------------|
+| Browser compatibility issues | Medium | Medium | Test on Chrome/Firefox/Edge throughout development |
+| Form validation gaps | High | Medium | Follow validation spec from Phase 4 exactly |
+| Module dependency conflicts | Low | Low | Use ES6 modules; clear import/export structure |
+| Scope configuration errors | High | Low | Unit test scope mapping exhaustively |
+
+### Success Metrics
+
+| Metric | Target | Measurement |
+|--------|--------|-------------|
+| Code coverage (unit tests) | > 80% | Jest/test runner report |
+| Form validation accuracy | 100% | All edge cases tested |
+| Browser compatibility | Chrome, Firefox, Edge | Manual testing |
+| Page load time | < 3 seconds | Lighthouse audit |
+| Design fidelity | > 95% | Visual comparison with wireframes |
+
+### Transition Criteria to Phase 6
+
+- [x] All frontend modules implemented
+- [x] Dashboard renders correctly with mock data
+- [x] Input forms validate all required fields
+- [x] Tab navigation works across all views
+- [x] Unit tests passing (>80% coverage)
+- [x] Code reviewed and approved

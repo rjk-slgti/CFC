@@ -587,3 +587,70 @@ Now that frontend and backend are integrated, proceed to **Phase 9: Testing** to
 
 *Phase 8 Complete ✅*
 *Next: Phase 9 — Testing (Verification Ready)*
+
+---
+
+## Phase 8 Deliverables & Milestones
+
+### Deliverables
+
+| # | Deliverable | Format | Owner |
+|---|-------------|--------|-------|
+| D8.1 | CORS Configuration | server.js update | Backend Lead |
+| D8.2 | Frontend API Module (Production-Ready) | JavaScript module | Frontend Lead |
+| D8.3 | Error Handling Implementation | JavaScript modules | Full Stack Developers |
+| D8.4 | Loading State Components | HTML/CSS/JavaScript | Frontend Developer |
+| D8.5 | Integration Test Suite | Test scripts | QA Engineer |
+| D8.6 | End-to-End Data Flow Verification | Test report | QA Engineer |
+
+### Key Milestones
+
+| # | Milestone | Criteria | Target Week |
+|---|-----------|----------|-------------|
+| M8.1 | CORS Configured | Frontend can reach backend without errors | Week 1 Day 2 |
+| M8.2 | API Communication Working | Successful round-trip POST/GET | Week 1 Day 4 |
+| M8.3 | Error Handling Complete | All error scenarios display user-friendly messages | Week 2 Day 2 |
+| M8.4 | Full Data Flow Verified | Form → API → DB → Dashboard round-trip | Week 2 Day 4 |
+| M8.5 | Integration Complete | All integration tests pass | Week 2 Day 5 |
+
+### Responsible Parties
+
+| Role | Responsibility |
+|------|---------------|
+| Frontend Lead | API module updates, error handling |
+| Backend Lead | CORS configuration, response format |
+| Full Stack Developer | End-to-end integration |
+| QA Engineer | Integration testing |
+
+### Estimated Timeline: 2 weeks
+
+| Week | Activities |
+|------|-----------|
+| Week 1 | CORS setup, API module update, basic connectivity |
+| Week 2 | Error handling, loading states, integration testing |
+
+### Risks & Mitigation
+
+| Risk | Impact | Probability | Mitigation |
+|------|--------|-------------|------------|
+| CORS blocking requests | High | High | Test CORS config first; use browser dev tools |
+| API response format mismatch | High | Medium | Verify contract against Phase 2 API spec |
+| Network timeout issues | Medium | Medium | Implement 10s timeout with retry logic |
+| Data loss during integration | High | Low | Transaction-based saves; verify each step |
+
+### Success Metrics
+
+| Metric | Target | Measurement |
+|--------|--------|-------------|
+| API round-trip success rate | 100% | Integration test pass rate |
+| Error handling coverage | 100% | All HTTP status codes handled |
+| User feedback (loading/error) | < 500ms | Time to display feedback |
+| Data integrity | 100% | Submitted data matches stored data |
+
+### Transition Criteria to Phase 9
+
+- [x] Frontend and backend communicate successfully
+- [x] All API endpoints reachable from frontend
+- [x] Error handling covers all scenarios
+- [x] Full data flow (input → calculation → storage → display) works
+- [x] Integration tests pass

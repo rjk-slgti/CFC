@@ -417,3 +417,67 @@ Now that you have the UI/UX design, proceed to **Phase 5: Frontend Implementatio
 
 *Phase 4 Complete ✅*
 *Next: Phase 5 — Frontend (Structured Input Engine)*
+
+---
+
+## Phase 4 Deliverables & Milestones
+
+### Deliverables
+
+| # | Deliverable | Format | Owner |
+|---|-------------|--------|-------|
+| D4.1 | User Flow Diagrams | Diagram (Figma/Miro) | UI/UX Designer |
+| D4.2 | Wireframes (Dashboard, Input, Reports) | Figma/Sketch files | UI/UX Designer |
+| D4.3 | Color System & Typography Guide | Design spec | UI/UX Designer |
+| D4.4 | Responsive Layout Specifications | Breakpoint documentation | UI/UX Designer |
+| D4.5 | Accessibility Compliance Checklist | Markdown | UI/UX Designer |
+| D4.6 | Design System Component Library | Figma library | UI/UX Designer |
+
+### Key Milestones
+
+| # | Milestone | Criteria | Target Week |
+|---|-----------|----------|-------------|
+| M4.1 | User Flows Approved | Stakeholder review passed | Week 1 Day 3 |
+| M4.2 | Wireframes Complete | All screens wireframed | Week 2 Day 2 |
+| M4.3 | Design System Ready | Color, typography, components defined | Week 2 Day 5 |
+
+### Responsible Parties
+
+| Role | Responsibility |
+|------|---------------|
+| UI/UX Designer | Wireframes, user flows, design system |
+| Lead Developer | Technical feasibility review |
+| Compliance Lead | Audit readability requirements |
+| Project Manager | Stakeholder feedback coordination |
+
+### Estimated Timeline: 2 weeks
+
+| Week | Activities |
+|------|-----------|
+| Week 1 | User research, user flows, initial wireframes |
+| Week 2 | Detailed wireframes, design system, review and approval |
+
+### Risks & Mitigation
+
+| Risk | Impact | Probability | Mitigation |
+|------|--------|-------------|------------|
+| Scope creep in UI features | Medium | High | Strict phase scope; defer to Phase 14 |
+| Accessibility gaps | Medium | Medium | Use WCAG 2.1 AA checklist |
+| Wireframe-code mismatch | Low | Medium | Developer reviews wireframes before approval |
+
+### Success Metrics
+
+| Metric | Target | Measurement |
+|--------|--------|-------------|
+| Wireframe coverage | 100% | All user flows have corresponding wireframes |
+| Stakeholder approval | Signed off | Design review meeting |
+| Accessibility score | WCAG 2.1 AA | Automated + manual audit |
+| Mobile responsiveness | 100% | All screens tested at 3 breakpoints |
+
+### Transition Criteria to Phase 5
+
+- [x] All wireframes approved by stakeholders
+- [x] Design system documented
+- [x] User flows validated against Phase 1 requirements
+- [x] Responsive specifications defined
+- [x] Accessibility requirements documented

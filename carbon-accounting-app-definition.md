@@ -371,3 +371,71 @@ ISO 14064-1:2018 Compliant
 *Document Version: 1.0*
 *Last Updated: 2026-03-28*
 *ISO Standard: 14064-1:2018*
+
+---
+
+## Phase 1 Deliverables & Milestones
+
+### Deliverables
+
+| # | Deliverable | Format | Owner |
+|---|-------------|--------|-------|
+| D1.1 | Problem Statement Document | Markdown | Business Analyst |
+| D1.2 | User Role Definitions | Markdown | Business Analyst |
+| D1.3 | System Boundary Definition | Markdown | Compliance Lead |
+| D1.4 | Emission Categories (ISO 14064 Scopes) | Markdown/Table | Compliance Lead |
+| D1.5 | Input-Output Mapping | Markdown/Table | Business Analyst |
+| D1.6 | ISO 14064 Compliance Checklist | Markdown | Compliance Lead |
+| D1.7 | Reporting Use Case Specification | Markdown | Business Analyst |
+
+### Key Milestones
+
+| # | Milestone | Criteria | Target Week |
+|---|-----------|----------|-------------|
+| M1.1 | Stakeholder Interviews Complete | All user roles identified | Week 1 Day 3 |
+| M1.2 | System Boundary Approved | Organizational + operational boundary defined | Week 1 Day 5 |
+| M1.3 | Requirements Document Finalized | All sections complete, stakeholder sign-off | Week 2 Day 5 |
+
+### Responsible Parties
+
+| Role | Responsibility |
+|------|---------------|
+| Business Analyst | Requirements gathering, user stories, use cases |
+| Compliance Lead | ISO 14064 alignment, scope definitions, boundary |
+| Project Manager | Stakeholder coordination, timeline management |
+| Subject Matter Expert (SLGTI) | Domain knowledge, institutional context |
+
+### Estimated Timeline: 2 weeks
+
+| Week | Activities |
+|------|-----------|
+| Week 1 | Stakeholder interviews, problem statement, boundary definition |
+| Week 2 | Emission categories, input mapping, output specifications, compliance checklist |
+
+### Risks & Mitigation
+
+| Risk | Impact | Probability | Mitigation |
+|------|--------|-------------|------------|
+| Stakeholder unavailability | High | Medium | Schedule interviews early; have backup contacts |
+| Unclear organizational boundary | High | Medium | Reference ISO 14064 guidance documents |
+| Scope too broad | Medium | High | Prioritize material emission sources first |
+| Regulatory requirements change | Medium | Low | Design for flexibility; modular emission factors |
+
+### Success Metrics
+
+| Metric | Target | Measurement |
+|--------|--------|-------------|
+| Stakeholder coverage | 100% | All user roles represented |
+| ISO 14064 alignment | 100% | Compliance checklist complete |
+| Requirements completeness | 100% | All sections filled with specifics |
+| Stakeholder approval | Signed off | Review meeting with sign-off |
+
+### Transition Criteria to Phase 2
+
+- [x] Problem statement documented and approved
+- [x] All user roles defined with permissions
+- [x] System boundary (organizational + operational) defined
+- [x] ISO 14064 emission categories mapped
+- [x] Input/output specifications complete
+- [x] Compliance checklist passes all items
+- [x] Stakeholder sign-off obtained

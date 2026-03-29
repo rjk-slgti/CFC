@@ -974,3 +974,81 @@ Now that the backend is built, proceed to **Phase 7: Database** to design the Mo
 
 *Phase 6 Complete ✅*
 *Next: Phase 7 — Database (Traceable + Auditable)*
+
+---
+
+## Phase 6 Deliverables & Milestones
+
+### Deliverables
+
+| # | Deliverable | Format | Owner |
+|---|-------------|--------|-------|
+| D6.1 | Backend Project Structure | Git repo structure | Backend Lead |
+| D6.2 | Database Models (Mongoose Schemas) | JavaScript files | Backend Developer |
+| D6.3 | Emission Factors Data File | JSON file | Backend Developer |
+| D6.4 | Validation Middleware | JavaScript module | Backend Developer |
+| D6.5 | Audit Logging Middleware | JavaScript module | Backend Developer |
+| D6.6 | Calculation Controller | JavaScript module | Backend Developer |
+| D6.7 | API Routes | JavaScript module | Backend Developer |
+| D6.8 | Main Server Configuration | server.js | Backend Lead |
+| D6.9 | API Documentation | Postman Collection / Swagger | Backend Developer |
+| D6.10 | Backend Unit Tests | Test files | QA Engineer |
+
+### Key Milestones
+
+| # | Milestone | Criteria | Target Week |
+|---|-----------|----------|-------------|
+| M6.1 | Project Initialized | package.json, dependencies installed | Week 1 Day 2 |
+| M6.2 | Database Models Complete | All Mongoose schemas defined | Week 1 Day 5 |
+| M6.3 | Calculation Engine Working | Manual test passes all scenarios | Week 2 Day 3 |
+| M6.4 | API Endpoints Functional | All endpoints respond correctly | Week 2 Day 5 |
+| M6.5 | Audit Trail Verified | Every action logged correctly | Week 3 Day 2 |
+| M6.6 | Backend Ready for Integration | Postman tests all pass | Week 3 Day 5 |
+
+### Responsible Parties
+
+| Role | Responsibility |
+|------|---------------|
+| Backend Lead | Architecture, server setup, code review |
+| Backend Developer | Models, controllers, routes, middleware |
+| Compliance Lead | Audit trail requirements verification |
+| QA Engineer | Backend unit testing, API testing |
+
+### Estimated Timeline: 3 weeks
+
+| Week | Activities |
+|------|-----------|
+| Week 1 | Project setup, database models, emission factors data |
+| Week 2 | Validation middleware, calculation controller, API routes |
+| Week 3 | Audit middleware, server configuration, testing, documentation |
+
+### Risks & Mitigation
+
+| Risk | Impact | Probability | Mitigation |
+|------|--------|-------------|------------|
+| Calculation formula errors | Critical | Medium | Validate against manual calculations; peer review |
+| MongoDB connection issues | High | Low | Test Atlas connection early; have fallback local MongoDB |
+| Emission factor data errors | Critical | Low | Cross-reference IPCC AR5 published values |
+| Missing validation rules | High | Medium | Use validation spec from Phase 1 as checklist |
+| Audit trail gaps | High | Medium | Test every CRUD operation for logging |
+
+### Success Metrics
+
+| Metric | Target | Measurement |
+|--------|--------|-------------|
+| API endpoint coverage | 100% | All required endpoints implemented |
+| Calculation accuracy | 100% | Matched against manual calculations |
+| Audit trail completeness | 100% | Every CRUD operation logged |
+| Validation rule coverage | 100% | All Phase 1 rules enforced |
+| API response time | < 500ms | Postman response time |
+| Unit test coverage | > 80% | Jest report |
+
+### Transition Criteria to Phase 7
+
+- [x] All API endpoints functional
+- [x] Calculation engine produces correct results for all test cases
+- [x] Validation middleware enforces all required rules
+- [x] Audit logging captures every operation
+- [x] Unit tests passing (>80% coverage)
+- [x] API documentation complete
+- [x] Code reviewed and approved
