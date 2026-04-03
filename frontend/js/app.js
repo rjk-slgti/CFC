@@ -2,6 +2,40 @@ import { store } from './state/store.js';
 import { getEmissionFactors } from './services/api.js';
 import { Router } from './router/router.js';
 
+// Local fallback emission factor set (offline-first friendly)
+const LOCAL_EMISSION_FACTORS = [
+  {
+    scope: 'scope_2',
+    sourceType: 'electricity_grid',
+    gasType: 'CO2',
+    factorValue: 0.48,
+    unit: 'kwh',
+    source: 'IPCC AR5',
+    year: 2025,
+    region: 'global'
+  },
+  {
+    scope: 'scope_1',
+    sourceType: 'diesel_vehicle',
+    gasType: 'CO2',
+    factorValue: 2.68,
+    unit: 'liters',
+    source: 'IPCC AR5',
+    year: 2025,
+    region: 'global'
+  },
+  {
+    scope: 'scope_3',
+    sourceType: 'office_paper',
+    gasType: 'CO2',
+    factorValue: 1.09,
+    unit: 'ream',
+    source: 'EPA',
+    year: 2025,
+    region: 'global'
+  }
+];
+
 /**
  * Main application entry point
  * Initializes the store, fetches initial data, and sets up routing
@@ -11,8 +45,14 @@ async function initApp() {
     console.log('Initializing Carbon Accounting Dashboard...');
 
     // Fetch initial emission factors
-    const emissionFactors = await getEmissionFactors();
-    console.log('Loaded emission factors:', emissionFactors.length);
+    let emissionFactors;
+    try {
+      emissionFactors = await getEmissionFactors();
+      console.log('Loaded emission factors from API:', emissionFactors.length);
+    } catch (apiError) {
+      console.warn('Emission factors API failed, falling back to local defaults:', apiError.message);
+      emissionFactors = LOCAL_EMISSION_FACTORS;
+    }
 
     // Initialize store with emission factors
     store.setState({

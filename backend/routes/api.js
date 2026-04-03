@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const seedFactors = require('../data/seedFactors');
 const {
   calculateEmissions,
   getEmissions,
@@ -13,6 +14,11 @@ const {
   getBenchmark,
 } = require('../controllers/calculationController');
 const { validateCalculationInput, validateQueryParams, validateIdParam } = require('../middleware/validation');
+
+// Emission factors endpoint for frontend initialization
+router.get('/emission-factors', (req, res) => {
+  res.json({ success: true, data: seedFactors });
+});
 
 // Calculation
 router.post('/calculate', validateCalculationInput, calculateEmissions);
