@@ -47,9 +47,11 @@ export class Router {
       if (mainContent) {
         mainContent.innerHTML = this.currentComponent.render();
 
-        // Attach events if component has attachEvents method
+        // Attach events if component has attachEvents or attachEventListeners method
         if (this.currentComponent.attachEvents) {
           this.currentComponent.attachEvents(mainContent);
+        } else if (this.currentComponent.attachEventListeners) {
+          this.currentComponent.attachEventListeners();
         }
       }
     } else {

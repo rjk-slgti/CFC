@@ -3,41 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carbon Accounting & Footprint Dashboard</title>
+    <title>🌱 Intelligent Carbon Accounting Dashboard</title>
+    <meta name="description" content="Smart carbon footprint tracking with AI-powered insights and international standards compliance">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components/dashboard.css">
+    <link rel="stylesheet" href="css/components/form.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
 </head>
 <body>
+    <!-- Intelligent Header -->
     <header class="header">
-        <h1 class="header__title">Carbon Accounting Dashboard</h1>
+        <h1 class="header__title">
+            <span class="header__icon">🌱</span>
+            Carbon Intelligence
+        </h1>
         <nav class="header__nav">
-            <button class="header__theme-toggle" id="themeToggle">Toggle Theme</button>
+            <button class="btn btn--ghost" id="themeToggle" aria-label="Toggle theme">
+                <span id="themeIcon">🌙</span>
+                Theme
+            </button>
+            <div class="header__status">
+                <span class="status-indicator status-indicator--online" title="System Online"></span>
+                <span class="status-text">AI Active</span>
+            </div>
         </nav>
     </header>
 
+    <!-- Smart Sidebar -->
     <aside class="sidebar">
         <nav class="sidebar__nav">
-            <ul class="sidebar__list">
-                <li class="sidebar__item">
-                    <a href="#dashboard" class="sidebar__link sidebar__link--active" data-route="dashboard">Dashboard</a>
-                </li>
-                <li class="sidebar__item">
-                    <a href="#data-entry" class="sidebar__link" data-route="data-entry">Data Entry</a>
-                </li>
-                <li class="sidebar__item">
-                    <a href="#reports" class="sidebar__link" data-route="reports">Reports</a>
-                </li>
-                <li class="sidebar__item">
-                    <a href="#settings" class="sidebar__link" data-route="settings">Settings</a>
-                </li>
-            </ul>
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Dashboard</h3>
+                <ul class="sidebar__list">
+                    <li class="sidebar__item">
+                        <a href="#dashboard" class="sidebar__link sidebar__link--active" data-route="dashboard">
+                            <span class="sidebar__icon">📊</span>
+                            Overview
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="#analytics" class="sidebar__link" data-route="analytics">
+                            <span class="sidebar__icon">📈</span>
+                            Analytics
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Data Entry</h3>
+                <ul class="sidebar__list">
+                    <li class="sidebar__item">
+                        <a href="#data-entry" class="sidebar__link" data-route="data-entry">
+                            <span class="sidebar__icon">✏️</span>
+                            Activity Input
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="#bulk-import" class="sidebar__link" data-route="bulk-import">
+                            <span class="sidebar__icon">📁</span>
+                            Bulk Import
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Reports</h3>
+                <ul class="sidebar__list">
+                    <li class="sidebar__item">
+                        <a href="#reports" class="sidebar__link" data-route="reports">
+                            <span class="sidebar__icon">📋</span>
+                            Emission Reports
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="#compliance" class="sidebar__link" data-route="compliance">
+                            <span class="sidebar__icon">✅</span>
+                            Standards Compliance
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar__section">
+                <h3 class="sidebar__section-title">Settings</h3>
+                <ul class="sidebar__list">
+                    <li class="sidebar__item">
+                        <a href="#settings" class="sidebar__link" data-route="settings">
+                            <span class="sidebar__icon">⚙️</span>
+                            Preferences
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="#help" class="sidebar__link" data-route="help">
+                            <span class="sidebar__icon">❓</span>
+                            Help & Support
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
+
+        <!-- AI Assistant Widget -->
+        <div class="ai-assistant-widget">
+            <div class="ai-assistant__header">
+                <span class="ai-assistant__icon">🤖</span>
+                <span class="ai-assistant__title">AI Assistant</span>
+            </div>
+            <div class="ai-assistant__status">
+                <span class="status-dot status-dot--active"></span>
+                Ready to help
+            </div>
+        </div>
     </aside>
 
+    <!-- Intelligent Main Content -->
     <main class="main-content" id="mainContent">
         <!-- Dynamic content will be loaded here -->
+        <div class="loading-state" id="loadingState">
+            <div class="loading-spinner"></div>
+            <p>Initializing intelligent dashboard...</p>
+        </div>
     </main>
 
-    <script type="module" src="js/main.js"></script>
+    <!-- Smart Notifications -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- AI Suggestions Modal -->
+    <div class="modal" id="aiSuggestionsModal" style="display: none;">
+        <div class="modal__backdrop"></div>
+        <div class="modal__content">
+            <div class="modal__header">
+                <h3 class="modal__title">💡 AI Suggestions</h3>
+                <button class="modal__close" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal__body" id="aiSuggestionsContent">
+                <!-- AI suggestions will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>
