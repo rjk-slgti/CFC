@@ -60,7 +60,6 @@ export class DataEntryForm {
    * Initialize the intelligent form
    */
   init() {
-    this.attachEventListeners();
     this.showWelcomeMessage();
   }
 
