@@ -43,7 +43,8 @@ async function apiRequest(endpoint, options = {}) {
  * @returns {Promise<Array>} Emission factors
  */
 export async function getEmissionFactors() {
-  return apiRequest('/emission-factors');
+  const result = await apiRequest('/emission-factors');
+  return result && result.data ? result.data : [];
 }
 
 /**

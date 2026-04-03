@@ -49,15 +49,28 @@ async function initApp() {
     try {
       emissionFactors = await getEmissionFactors();
       console.log('Loaded emission factors from API:', emissionFactors.length);
+
+      if (!Array.isArray(emissionFactors)) {
+        throw new Error('Emission factors API returned invalid payload');
+      }
     } catch (apiError) {
       console.warn('Emission factors API failed, falling back to local defaults:', apiError.message);
       emissionFactors = LOCAL_EMISSION_FACTORS;
     }
 
+    // Normalize factor keys for all consumers
+    const normalizedFactors = emissionFactors.map((factor) => ({
+      ...factor,
+      source_type: factor.source_type || factor.sourceType || '',
+      sourceType: factor.sourceType || factor.source_type || '',
+      factor_value: factor.factor_value || factor.factorValue || 0,
+      unit: factor.unit || factor.Unit || '',
+      scope: factor.scope || factor.source_scope || ''
+    }));
+
     // Initialize store with emission factors
     store.setState({
-      emissionFactors: emissionFactors,
-      // activityData can be empty initially or loaded separately
+      emissionFactors: normalizedFactors,
       activityData: []
     });
 

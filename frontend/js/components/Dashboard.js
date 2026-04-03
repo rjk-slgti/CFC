@@ -274,12 +274,20 @@ export class Dashboard {
    */
   findEmissionFactor(emissionFactors, sourceType, unit) {
     const now = new Date();
-    return emissionFactors.find(factor => {
-      const validFrom = new Date(factor.valid_from);
-      const validTo = factor.valid_to ? new Date(factor.valid_to) : null;
 
-      return factor.source_type === sourceType &&
-             factor.unit === unit &&
+    return emissionFactors.find(factor => {
+      const factorSource = factor.source_type || factor.sourceType || '';
+      const factorUnit = (factor.unit || factor.Unit || '').toLowerCase();
+      const currentUnit = (unit || '').toLowerCase();
+
+      const startKey = factor.valid_from || factor.validFrom;
+      const endKey = factor.valid_to || factor.validTo;
+
+      const validFrom = startKey ? new Date(startKey) : new Date('1900-01-01');
+      const validTo = endKey ? new Date(endKey) : null;
+
+      return factorSource === sourceType &&
+             factorUnit === currentUnit &&
              validFrom <= now &&
              (!validTo || validTo >= now);
     }) || null;
