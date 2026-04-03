@@ -1,0 +1,142 @@
+/* Data Entry Form Component Styles */
+
+.data-entry-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--spacing-4xl);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-lg);
+}
+
+.data-entry-form__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-3xl);
+  text-align: center;
+}
+
+.data-entry-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.data-entry-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.data-entry-form__label {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.data-entry-form__input,
+.data-entry-form__select,
+.data-entry-form__textarea {
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border-medium);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.data-entry-form__input:focus,
+.data-entry-form__select:focus,
+.data-entry-form__textarea:focus {
+  outline: none;
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.data-entry-form__textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.data-entry-form__error {
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+  display: none;
+  margin-top: var(--spacing-xs);
+}
+
+.data-entry-form__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-xl);
+}
+
+.data-entry-form__submit {
+  padding: var(--spacing-lg) var(--spacing-3xl);
+  background-color: var(--color-primary-600);
+  color: var(--color-text-inverse);
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  position: relative;
+  min-width: 150px;
+}
+
+.data-entry-form__submit:hover:not(:disabled) {
+  background-color: var(--color-primary-700);
+}
+
+.data-entry-form__submit:disabled {
+  background-color: var(--color-neutral-400);
+  cursor: not-allowed;
+}
+
+.data-entry-form__submit-text,
+.data-entry-form__submit-loading {
+  display: inline;
+}
+
+.data-entry-form__submit-loading {
+  display: none;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .data-entry-form {
+  background-color: var(--color-bg-tertiary);
+}
+
+[data-theme="dark"] .data-entry-form__input,
+[data-theme="dark"] .data-entry-form__select,
+[data-theme="dark"] .data-entry-form__textarea {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-dark);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] .data-entry-form__input:focus,
+[data-theme="dark"] .data-entry-form__select:focus,
+[data-theme="dark"] .data-entry-form__textarea:focus {
+  border-color: var(--color-primary-400);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .data-entry-form {
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg);
+  }
+
+  .data-entry-form__title {
+    font-size: var(--font-size-xl);
+  }
+
+  .data-entry-form__submit {
+    width: 100%;
+  }
+}
